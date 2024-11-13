@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description')->nullable();
+            $table->date('date')->nullable();
             $table->unsignedBigInteger('environmentId')->nullable(false);
             $table->foreign('environmentId')->references('id')->on('environments')->onDelete('cascade');
             $table->unsignedBigInteger('sectionId')->nullable(false);

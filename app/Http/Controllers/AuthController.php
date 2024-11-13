@@ -32,7 +32,7 @@ class AuthController extends Controller
         return response()->json(['success' => true, 'msg' => "User Logged in successfuly", "data" => $user, "token" => $token], 200);
 
         } catch (\Throwable $th) {
-            return response()->json(['success' => false, 'msg' => $th->getMessage()]);
+            return response()->json(['success' => false, 'msg' => $th->getMessage()], 400);
         }
     }
 

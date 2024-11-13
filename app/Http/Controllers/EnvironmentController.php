@@ -33,6 +33,7 @@ class EnvironmentController extends Controller
 
         $envir = Environment::create([
             "name" => $request->name,
+            "color" => $request->color,
             "userId" => $user->id,
         ]);
 
@@ -63,6 +64,7 @@ class EnvironmentController extends Controller
             $request->validate(
                 [
                     'name' => 'required|string',
+                    'color' => 'required',
                 ],
                 [
                     'required' => ':attribute is required!',

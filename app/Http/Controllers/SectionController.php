@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 
 class SectionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $section = Section::all();
+        $environmentId = $request->query('environmentId');
 
-        return response()->json(['success' => 'true', 'message' => 'Showing all Sections', 'data' => $section],200);
+        $sections = Section::where('environmentId', $environmentId)->get();
+
+        return response()->json(['success' => 'true', 'message' => 'Showing all Sections', 'data' => $sections],200);
     }
 
     public function store(Request $request)
@@ -21,6 +23,7 @@ class SectionController extends Controller
             [
                 'name' => 'required|string',
                 'environmentId' => 'required',
+                'color' => 'required',
             ],
             [
                 'required' => ':attribute is required!',
@@ -31,6 +34,7 @@ class SectionController extends Controller
         $section = Section::create([
             "name" => $request->name,
             "environmentId" => $request->environmentId,
+            'color' => $request->color,
         ]);
 
         return response()->json(['success' => 'true', 'message' => 'Section created successfully!', 'data' => $section],201);

@@ -10,6 +10,7 @@ class Environment extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'color',
         'userId'
     ];
 

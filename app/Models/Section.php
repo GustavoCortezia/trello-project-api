@@ -10,7 +10,8 @@ class Section extends Model
     use HasFactory;
     protected $fillable = [
         'name',
-        'environmentId'
+        'environmentId',
+        'color'
     ];
 
     public function environment(){

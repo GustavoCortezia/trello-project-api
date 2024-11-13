@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('environments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('color')->default('white');
+            $table->string('color');
             $table->unsignedBigInteger('userId')->nullable(false);
             $table->foreign('userId')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
